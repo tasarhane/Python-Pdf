@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import PyPDF2
+
+dosya_yolu = "D:/Dosyalar/deneme.pdf"
+
+dosya = PyPDF2.PdfFileReader(open(dosya_yolu, "rb"), strict=False)
+
+sayfa_sayisi = dosya.getNumPages()
+
+for i in range(sayfa_sayisi):
+    sayfa = dosya.getPage(i)
+    print sayfa.extractText().encode("utf-8")
+    # print sayfa.extractText().encode("iso-8859-9")
+    # print sayfa.extractText().encode("latin-1")
+    # print sayfa.extractText().encode("windows-1254")
+
+print "PDF sayfa sayısı: " + str(sayfa_sayisi)
